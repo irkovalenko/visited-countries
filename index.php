@@ -5,7 +5,7 @@ include_once "data.php";
 
 foreach ($countries as $country) { ?>
 <ul>
- <li><h3><?php echo $country["name"] . " - " . $country["capital"] . "\n"; ?> </h3></li>
+ <li><h3><?php echo $country["name"] . "\n"; ?> </h3></li>
 </ul>
 <?php }
 
