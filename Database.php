@@ -26,7 +26,8 @@ class Database
 
     public function countries(): array
     {
-        return $this->query("SELECT * FROM countries")->fetchAll(PDO::FETCH_ASSOC);
+        return $this->query("SELECT * FROM countries"
+                            . " ORDER BY name")->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function regions(): array
