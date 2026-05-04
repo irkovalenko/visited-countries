@@ -1,6 +1,5 @@
 <?php
 include_once "../Database.php";
-include_once "../pages/countries_list.php";
 
 function regionAssigner(array $countries, array $regions): array {
     $regionLookup = [];
