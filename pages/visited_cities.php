@@ -1,15 +1,23 @@
 <?php
 
-include_once "../components/header.php";
-include_once "../components/country_info.php";
-include_once "../data.php";
+include_once __DIR__ . "/../components/header.php";
+include_once __DIR__ . "/../components/country_info.php";
+include_once __DIR__ . "/../functions.php";
+include_once __DIR__ . "/../Database.php";
 
-foreach ($countries as $country) {
-    if ($country["name"] === $_GET["country"]) { ?>
+$countryName = $_GET["country"] ?? null;
+$db = new Database();
 
- <li><h3><?php echo implode("<br>", $country["visited cities"]); ?> </h3></li>
+if ($countryName) {
+    $country = $db->getCountryByName($countryName);
 
-<?php }
+    if ($country) {
+        $cityRows = $db->getVisitedCitiesByCountry($country["id"]);
+
+        foreach ($cityRows as $cityRow) {
+            echo "<li>" . $cityRow["name"] . "</li>";
+        }
+    }
 }
 
 ?>

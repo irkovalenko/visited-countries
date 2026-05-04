@@ -1,7 +1,9 @@
 <?php
-
 include_once "components/header.php";
-include_once "data.php";
+include_once "Database.php";
+
+$db = new Database();
+$countries = $db->countries();
 
 foreach ($countries as $country) { ?>
 <ul>

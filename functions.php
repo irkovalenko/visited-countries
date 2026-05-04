@@ -1,18 +1,21 @@
 <?php
+include_once "../Database.php";
+include_once "../pages/countries_list.php";
 
-function categoryAssigner(array $countries) : array {
-foreach ($countries as $key => $country) {
-    if (str_starts_with($country["id"], "1")) {
-        $countries[$key]["category"] = "southern-europe";
-    } elseif (str_starts_with($country["id"], "2")) {
-        $countries[$key]["category"] = "eastern-europe";
-    } elseif (str_starts_with($country["id"], "3")) {
-        $countries[$key]["category"] = "western-europe";
-    } elseif (str_starts_with($country["id"], "4")) {
-        $countries[$key]["category"] = "central-europe";
+function regionAssigner(array $countries, array $regions): array {
+    $regionLookup = [];
+    foreach ($regions as $region) {
+        $regionLookup[(int)$region["id"]] = strtolower(str_replace(" ", "-", $region["name"]));
     }
-}
-return $countries;
+
+    foreach ($countries as $key => $country) {
+        $region_id = (int)$country["region_id"]; // cast to int
+        if (isset($regionLookup[$region_id])) {
+            $countries[$key]["region_id"] = $regionLookup[$region_id];
+        }
+    }
+
+    return $countries;
 }
 
 function countryImage(array $countries) : array {
@@ -30,12 +33,12 @@ function countryImage(array $countries) : array {
 return [];
 }
 
-function countryCapital(array $countries) : string {
-    foreach ($countries as $country) {
-        if ($country["name"] === $_GET["country"] ?? null)
-        {
-            return $country["capital"];
+
+function countryCapital(array $countries): string {
+    foreach ($countries as $row) {
+        if ($row['name'] === ($_GET["country"] ?? null)) {
+            return $row["capital"];
         }
-}
-return "";
+    }
+    return "";
 }
