@@ -11,7 +11,7 @@ if ($newgame == 1 || empty($page)) {
 }
 
 if (isset($_POST["word"])) {
-    $_SESSION["word"][$page-2] = htmlspecialchars($_POST["word"], ENT_QUOTES, 'UTF-8');
+    $_SESSION["word"][$page - 2] = htmlspecialchars($_POST["word"], ENT_QUOTES, 'UTF-8');
 }
 
 if ($page > $total) {
@@ -23,7 +23,7 @@ include_once '../components/header.php';
 
 echo "<h1>Step $page of $total</h1>";
 
-echo '<form method="post" action="play.php?p=' . ($page+1) . '">';
+echo '<form method="post" action="play.php?p=' . ($page + 1) . '">';
 echo '<div class="form-group form-group-lg">';
 
 switch ($page) {
@@ -47,6 +47,6 @@ switch ($page) {
         break;
 }
 echo '</div>
-  <button type="submit">Submit</button>
+  <button style="margin-top: 10px;" type="submit">Submit</button>
 </form>
 ';

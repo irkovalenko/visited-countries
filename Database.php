@@ -26,8 +26,12 @@ class Database
 
     public function countries(): array
     {
-        return $this->query("SELECT * FROM countries"
-                            . " ORDER BY name")->fetchAll(PDO::FETCH_ASSOC);
+        return $this->query(
+            "SELECT countries.id, countries.name, countries.capital, countries.region_id, regions.name AS region_name
+         FROM countries
+         JOIN regions ON countries.region_id = regions.id
+         ORDER BY countries.name"
+        )->fetchAll(PDO::FETCH_ASSOC);
     }
 
     public function regions(): array
@@ -45,7 +49,7 @@ class Database
         return $this->query("SELECT * FROM countries WHERE name = ?", [$name])->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function getVisitedCitiesByCountry(int $countryId): array
+    public function getVisitedCitiesByCountry($countryId): array
     {
         return $this->query("
             SELECT cities.name
@@ -53,5 +57,17 @@ class Database
             INNER JOIN countries_cities ON cities.id = countries_cities.city_id
             WHERE countries_cities.country_id = ?
         ", [$countryId])->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public function getCountry(string $name)
+    {
+        $stmt = $this->connection->prepare(
+            "SELECT *, regions.name AS region_name
+            FROM countries
+            JOIN regions ON countries.region_id = regions.id
+            WHERE countries.name = ?"
+        );
+        $stmt->execute([$name]);
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 }
