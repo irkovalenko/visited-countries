@@ -1,14 +1,14 @@
 <?php
 include_once "../components/header.php";
-include_once "../classes/Country.php";
+include_once "../classes/repositories/CountryRepository.php";
 include_once "../functions.php";
-include_once "../Database.php";
 
 $regionInUrl = $_GET["cat"] ?? null;
-$db = new Database();
-$countries = $db->countries();
 
 $search = !empty($_GET["search"]) ? filter_input(INPUT_GET, "search") : null;
+
+$repo = new CountryRepository();
+$countries = $repo->all();
 ?>
 
 <main>

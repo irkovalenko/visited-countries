@@ -25,15 +25,8 @@
             </ul>
         </div>
     </div>
-    <main>
-        <?php
-        // display only on cat = European region pages
-        if (isset($_GET['cat'])) {
-            include_once "search.php";
-        }
-
-        ?>
-    </main>
-</body>
-
-</html>
+    <?php
+    // display only on cat = European region pages
+    if (isset($_GET['cat'])) {
+        include_once "search.php";
+    }

@@ -50,3 +50,5 @@ echo '</div>
   <button style="margin-top: 10px;" type="submit">Submit</button>
 </form>
 ';
+
+require_once "../components/footer.php";

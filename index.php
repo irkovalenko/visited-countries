@@ -1,9 +1,9 @@
 <?php
 include_once "components/header.php";
-include_once "Database.php";
+include_once "classes/repositories/CountryRepository.php";
 
-$db = new Database();
-$countries = $db->countries();
+$repo = new CountryRepository();
+$countries = $repo->all();
 
 foreach ($countries as $country) { ?>
     <ul>
@@ -12,5 +12,7 @@ foreach ($countries as $country) { ?>
         </li>
     </ul>
 <?php }
+
+require_once "components/footer.php";
 
 ?>
