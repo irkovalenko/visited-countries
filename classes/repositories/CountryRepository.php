@@ -13,13 +13,21 @@ class CountryRepository implements RepositoryInterface
 
     public function all(string $table = "countries"): array
     {
-        return $this->db->countries();
+        return $this->db->query(
+            "SELECT countries.id, countries.name, countries.capital, countries.region_id, regions.name AS region_name
+         FROM countries
+         JOIN regions ON countries.region_id = regions.id
+         ORDER BY countries.name"
+        )->fetchAll(PDO::FETCH_ASSOC);
     }
-
-    public function find($table, $id, $field = 'id'): array
+    public function find(string $table, $id, string $field = 'id'): array
     {
-        $statement = $this->db->prepare("SELECT * FROM {$table} WHERE {$field} = ?");
-        $statement->execute([$id]);
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $this->db->query(
+            "SELECT countries.*, regions.name AS region_name
+         FROM countries
+         JOIN regions ON countries.region_id = regions.id
+         WHERE countries.{$field} = ?",
+            [$id]
+        )->fetchAll(PDO::FETCH_ASSOC);
     }
 }

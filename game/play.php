@@ -23,6 +23,8 @@ include_once '../components/header.php';
 
 echo "<h1>Step $page of $total</h1>";
 
+echo '<div class="container">';
+
 echo '<form method="post" action="play.php?p=' . ($page + 1) . '">';
 echo '<div class="form-group form-group-lg">';
 
@@ -48,7 +50,7 @@ switch ($page) {
 }
 echo '</div>
   <button style="margin-top: 10px;" type="submit">Submit</button>
-</form>
-';
+</form>';
+echo '<div class="container">';
 
 require_once "../components/footer.php";
