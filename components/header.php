@@ -26,6 +26,7 @@
         </div>
     </div>
     <?php
+    // display only on cat = European region pages
     if (isset($_GET['cat'])) {
         include_once "search.php";
     }

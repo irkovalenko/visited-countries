@@ -50,7 +50,7 @@ switch ($page) {
 }
 echo '</div>
   <button style="margin-top: 10px;" type="submit">Submit</button>
-</form>';
-echo '<div class="container">';
+</form>
+';
 
 require_once "../components/footer.php";

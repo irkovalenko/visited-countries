@@ -10,10 +10,6 @@ body {
    color: #676767;
 }
 
-.container {
-    padding-left:10px;
-}
-
 html {
     position: relative;
     min-height: 100%;
@@ -32,6 +28,8 @@ footer {
     justify-content: center;
     align-items: center;
 }
+
+
 
 
 
