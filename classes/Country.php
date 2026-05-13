@@ -1,5 +1,7 @@
 <?php
 include_once "../Database.php";
+include_once __DIR__ . "/../classes/repositories/CountryRepository.php";
+
 
 class Country
 {
@@ -10,17 +12,25 @@ class Country
 
     public function __construct(string $name)
     {
-        $db = new Database();
-        $data = $db->getCountry($name);
+        $repo = new CountryRepository();
+        $data = $repo->find('countries', $name, 'name')[0];
+        $this->name    = $data["name"];
         $this->capital = $data["capital"];
-        $this->region = $data["region_name"];
+        $this->region  = $data["region_name"];
     }
 
 
-    public function getCapital(string $name)
+    public function getCapital(): string
     {
-        if ($name === ($_GET["country"] ?? null)) {
-            return $this->capital;
-        }
+        return $this->capital;
+    }
+
+    public function getData(): array
+    {
+        return [
+            "name"        => $this->name,
+            "capital"     => $this->capital,
+            "region_name" => $this->region
+        ];
     }
 }

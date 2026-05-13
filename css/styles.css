@@ -31,6 +31,8 @@ footer {
 
 
 
+
+
 a {
     color: #3872c2;
 }
@@ -46,18 +48,35 @@ a:hover {
 h1 {
     font-size: 2em;
     margin: 0.67em 0;
+    margin-left: 10px;
+}
+
+.city-list {
+    padding-left: 30px;
+}
+
+.city-list li {
+    margin-bottom: 5px;
 }
 
 ol, ul {
-    padding: 0 0 0 0px;
+    padding: 0 0 0 30px;
 }
 li {
     list-style-position: inside;
     margin-bottom: 10px;
 }
+
+li::marker {
+    color: blue;
+}
+
 li h3 {
     display: inline;
-    margin: 0;
+}
+
+li a {
+    margin-left: 10px;
 }
 
 img {
@@ -128,7 +147,7 @@ input[type="submit"]:hover {
 }
 .header:after {content:"";height:0;display:block;visibility:hidden;clear:both;}
 .header {background: #87d3ef; border-bottom: 3px solid #78bfdb;}
-.header .branding-title {float: left; margin: 0 0 0 5px; color: black; width:225px; height:50px;padding: 0; line-height: 95px;}
+.header .branding-title {float: left; margin: 0 0 0 10px; color: black; width:225px; height:50px;padding: 0; line-height: 95px;}
 .header .branding-title a {float: left; height: 50px; width: 500px;}
 .header a {text-decoration: none;}
 .header .nav {display: block; top: 10; right: 0; margin: 0; position: relative; left: 15px; z-index: 99999999;}
@@ -159,6 +178,7 @@ header .nav li.on a {text-decoration:underline;}
     background: transparent;
     width:100%;
     text-align:left;
+    margin-left:10px;
 }
 .search form {
     margin: 5px 5px 5px auto;
@@ -183,6 +203,7 @@ header .nav li.on a {text-decoration:underline;}
 }
 
 .country-image{
+    margin-top: 10px;
     border: 3px solid #4a90e2;
     max-width: 500px;
     border-radius: 5px;}
@@ -249,4 +270,22 @@ header .nav li.on a {text-decoration:underline;}
   gap: 10px;
   margin-top: 20px;
   flex-wrap: wrap;
+}
+
+.capital-badge {
+    background-color: #4a90e2;
+    color: white;
+    padding: 8px 16px;
+    display: inline-block;
+    margin-left:10px;
+}
+
+.rating-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    border: 1px solid #4a90e2;
+    background: var(--color-background-secondary);
+    display: inline-block;
+    font-size: 1.5rem;
+    
 }

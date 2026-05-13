@@ -21,7 +21,7 @@ $countries = $repo->all();
             $matchesSearch = !$search || stripos($country["name"], $search) !== false;
 
             if ($matchesRegion && $matchesSearch) {
-                echo "<li><a href='/pages/visited_cities.php?country="
+                echo "<li><a href='/pages/cities_list.php?country="
                     . urlencode($country["name"]) . "'>"
                     . $country["name"] . "</a></li>";
             }
