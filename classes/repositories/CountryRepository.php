@@ -1,6 +1,10 @@
 <?php
-include_once __DIR__ . "/../../Database.php";
-require_once __DIR__ . "/../../interfaces/RepositoryInterface.php";
+
+namespace App\Classes\Repositories;
+
+use App\Interfaces\RepositoryInterface;
+use App\Database;
+
 
 class CountryRepository implements RepositoryInterface
 {
@@ -19,7 +23,7 @@ class CountryRepository implements RepositoryInterface
          JOIN regions ON countries.region_id = regions.id
          ORDER BY countries.name"
         );
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function find($table, $id, $field = 'id'): array
@@ -30,6 +34,6 @@ class CountryRepository implements RepositoryInterface
          JOIN regions ON countries.region_id = regions.id
          WHERE countries.{$field} = ?",
             [$id]
-        )->fetchAll(PDO::FETCH_ASSOC);
+        )->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

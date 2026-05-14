@@ -1,7 +1,8 @@
 <?php
-include_once "../components/header.php";
-include_once "../classes/repositories/CountryRepository.php";
-include_once "../functions.php";
+include_once __DIR__ . "/../components/header.php";
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Classes\Repositories\CountryRepository;
 
 $regionInUrl = $_GET["cat"] ?? null;
 

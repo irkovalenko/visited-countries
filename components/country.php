@@ -1,7 +1,7 @@
 <?php
-include_once __DIR__ . "/../functions.php";
-include_once __DIR__ . "/../classes/Country.php";
-include_once __DIR__ . "/../classes/repositories/CountryRepository.php";
+
+use App\Classes\Country;
+use App\Classes\Repositories\CountryRepository;
 
 if (!isset($_GET["country"])) return;
 

@@ -1,6 +1,9 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Classes\City;
+
 include_once __DIR__ . "/../components/header.php";
-include_once __DIR__ . "/../classes/City.php";
 
 $cityName = $_GET["city"] ?? null;
 $countryName = $_GET["country"] ?? null;

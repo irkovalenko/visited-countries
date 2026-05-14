@@ -1,7 +1,11 @@
 <?php
-include_once __DIR__ . "/../Database.php";
-include_once __DIR__ . "/Country.php";
-include_once __DIR__ . "/../classes/repositories/CityRepository.php";
+
+namespace App\Classes;
+
+use App\Database;
+use App\Classes\Repositories\CityRepository;
+use App\classes\Country;
+
 
 class City
 {

@@ -1,6 +1,9 @@
 <?php
+require_once __DIR__ . '/../vendor/autoload.php';
+
+use App\Classes\Repositories\CityRepository;
+
 include_once __DIR__ . "/../components/header.php";
-include_once __DIR__ . "/../classes/repositories/CityRepository.php";
 
 $countryName = $_GET["country"] ?? null;
 $repo = new CityRepository();

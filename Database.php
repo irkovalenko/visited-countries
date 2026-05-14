@@ -1,5 +1,7 @@
 <?php
 
+namespace App;
+
 class Database
 {
     public $connection;
@@ -10,9 +12,9 @@ class Database
         $username = "root";
         $password = "root";
         try {
-            $this->connection = new PDO($dsn, $username, $password);
-            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        } catch (Exception $e) {
+            $this->connection = new \PDO($dsn, $username, $password);
+            $this->connection->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+        } catch (\Exception $e) {
             die("Connection failed: " . $e->getMessage());
         }
     }

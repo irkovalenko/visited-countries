@@ -1,6 +1,10 @@
 <?php
-include_once __DIR__ . "/../../Database.php";
-require_once __DIR__ . "/../../interfaces/RepositoryInterface.php";
+
+namespace App\Classes\Repositories;
+
+use App\Interfaces\RepositoryInterface;
+use App\Database;
+
 
 class CityRepository implements RepositoryInterface
 {
@@ -13,7 +17,7 @@ class CityRepository implements RepositoryInterface
 
     public function all(string $table = "cities"): array
     {
-        return $this->db->query("SELECT * FROM cities")->fetchAll(PDO::FETCH_ASSOC);
+        return $this->db->query("SELECT * FROM cities")->fetchAll(\PDO::FETCH_ASSOC);
     }
 
 
@@ -22,7 +26,7 @@ class CityRepository implements RepositoryInterface
         return $this->db->query(
             "SELECT * FROM {$table} WHERE {$field} = ?",
             [$id]
-        )->fetchAll(PDO::FETCH_ASSOC);
+        )->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getCitiesByCountry(string $countryName): array
@@ -33,6 +37,6 @@ class CityRepository implements RepositoryInterface
          JOIN countries ON countries_cities.country_id = countries.id
          WHERE countries.name = ?",
             [$countryName]
-        )->fetchAll(PDO::FETCH_ASSOC);
+        )->fetchAll(\PDO::FETCH_ASSOC);
     }
 }
